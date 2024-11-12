@@ -1,1 +1,62 @@
+Faça uma função calculadora que os números e as operações serão feitas pelo usuário. O código deve ficar rodando infinitamente até que o usuário escolha a opção de sair. No início, o programa mostrará a seguinte lista de operações:
 
+1: Soma
+2: Subtração
+3: Multiplicação
+4: Divisão
+0: Sair
+
+Digite o número para a operação correspondente e caso o usuário introduza qualquer outro, o sistema deve mostrar a mensagem “Essa opção não existe” e voltar ao menu de opções.
+
+Após a seleção, o sistema deve pedir para o usuário inserir o primeiro e segundo valor, um de cada. Depois precisa executar a operação e mostrar o resultado na tela. Quando o usuário escolher a opção “Sair”, o sistema irá parar.
+
+É necessário que o sistema mostre as opções sempre que finalizar uma operação e mostrar o resultado. 
+
+def calculadora():
+    while True:
+        # Escolhe a operação
+        print("\nEscolha uma operação:")
+        print("1: Soma")
+        print("2: Subtração")
+        print("3: Multiplicação")
+        print("4: Divisão")
+        print("0: Sair")
+        
+        # seleciona a opção
+        opcao = input("Digite o número da operação desejada: ")
+        
+        # Verifica se a opção é válida
+        if opcao == "0":
+            print("Fim das operações...")
+            break
+        elif opcao not in ("1", "2", "3", "4"):
+            print("Atenção! Essa opção não existe.")
+            continue
+        
+        # Pede os dois valores
+        try:
+            valor1 = float(input("Digite o primeiro valor: "))
+            valor2 = float(input("Digite o segundo valor: "))
+        except ValueError:
+            print("Por favor, insira números válidos.")
+            continue
+
+        # Realiza a operação escolhida
+        if opcao == "1":
+            resultado = valor1 + valor2
+            print(f"{valor1} + {valor2} = {resultado}")
+        elif opcao == "2":
+            resultado = valor1 - valor2
+            print(f"{valor1} - {valor2} = {resultado}")
+        elif opcao == "3":
+            resultado = valor1 * valor2
+            print(f"{valor1} * {valor2} = {resultado}")
+        elif opcao == "4":
+            if valor2 == 0:
+                print("Erro! Divisão por zero não é permitida.")
+                continue
+            resultado = valor1 / valor2
+            print(f"{valor1} / {valor2} = {resultado}")
+
+if __name__ == "__main__":
+    calculadora()
